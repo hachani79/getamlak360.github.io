@@ -2,105 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thank You - Amlak 360 Download</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You – Amlak 360</title>
 
   <style>
+    :root {
+      --primary: #c9a961;
+      --primary-light: #dbb968;
+      --dark: #0a1628;
+      --dark-alt: #0f1f35;
+      --text: #f0f4ff;
+      --muted: #a8b8d8;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    :root {
-      --primary: #c9a961;
-      --primary-light: #dbb968;
-      --dark: #0a1628;
-      --dark-alt: #0f1f35;
-      --light-text: #f0f4ff;
-      --light-text-secondary: #a8b8d8;
-    }
-
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background: linear-gradient(135deg, var(--dark), var(--dark-alt));
-      color: var(--light-text);
       min-height: 100vh;
+      background: linear-gradient(135deg, var(--dark), var(--dark-alt));
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1rem;
+      padding: 24px;
+      color: var(--text);
     }
 
-    .container {
-      max-width: 500px;
+    /* ✅ VERTICAL CARD */
+    .card {
+      max-width: 520px;
       width: 100%;
-      background: rgba(20, 40, 73, 0.5);
-      border: 1px solid rgba(201, 169, 97, 0.2);
-      border-radius: 20px;
-      padding: 3rem 2rem;
+      background: rgba(20, 40, 73, 0.55);
+      border: 1px solid rgba(201, 169, 97, 0.25);
+      border-radius: 22px;
+      padding: 32px 28px;
       text-align: center;
       backdrop-filter: blur(10px);
-      animation: slideIn 0.6s ease-out;
-    }
-
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
     }
 
     .logo {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: float 3s ease-in-out infinite;
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 18px;
     }
 
     .logo img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      border-radius: 20px;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      border-radius: 18px;
     }
 
     h1 {
       font-size: 2.2rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 6px;
       background: linear-gradient(135deg, var(--primary), var(--primary-light));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .subtitle {
+      color: var(--muted);
+      margin-bottom: 26px;
       font-size: 1rem;
-      color: var(--light-text-secondary);
-      margin-bottom: 2rem;
     }
 
-    .check-icon {
-      font-size: 3rem;
-      margin: 1rem 0;
-      animation: bounce 0.6s ease-out;
-    }
-
-    @keyframes bounce {
-      0% { transform: scale(0); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
+    .check {
+      font-size: 2.8rem;
+      margin-bottom: 18px;
     }
 
     .message {
       font-size: 1rem;
-      line-height: 1.8;
-      margin: 1.5rem 0;
+      line-height: 1.75;
+      margin-bottom: 26px;
     }
 
     .highlight {
@@ -108,147 +87,112 @@
       font-weight: 600;
     }
 
-    .download-link {
+    .download-btn {
       display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.8rem 2rem;
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 14px;
       background: linear-gradient(135deg, var(--primary), var(--primary-light));
       color: var(--dark);
       text-decoration: none;
-      border-radius: 10px;
       font-weight: 600;
-      transition: transform 0.3s ease;
-      box-shadow: 0 8px 24px rgba(201, 169, 97, 0.3);
+      margin-bottom: 24px;
+      transition: transform 0.25s ease;
     }
 
-    .download-link:hover {
+    .download-btn:hover {
       transform: translateY(-2px);
     }
 
-    .spinner {
-      display: inline-block;
-      width: 18px;
-      height: 18px;
-      margin-left: 6px;
-      border: 3px solid rgba(0,0,0,0.2);
-      border-top-color: var(--dark);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
     .features {
-      margin-top: 2rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(201, 169, 97, 0.2);
       text-align: left;
+      border-top: 1px solid rgba(201,169,97,0.3);
+      padding-top: 20px;
+      margin-top: 20px;
     }
 
     .features-title {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
       color: var(--primary);
-      margin-bottom: 1rem;
+      margin-bottom: 12px;
       text-transform: uppercase;
     }
 
-    .feature-item {
+    .feature {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
-      margin-bottom: 0.6rem;
+      gap: 10px;
+      margin-bottom: 10px;
       font-size: 0.9rem;
-      color: var(--light-text-secondary);
+      color: var(--muted);
     }
 
-    .feature-icon {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: rgba(201, 169, 97, 0.2);
+    .feature span {
       color: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      flex-shrink: 0;
+      font-weight: 700;
     }
 
-    .footer-text {
-      margin-top: 2rem;
+    .footer {
+      margin-top: 24px;
       font-size: 0.8rem;
-      color: var(--light-text-secondary);
+      color: var(--muted);
     }
 
     @media (max-width: 480px) {
-      .logo { width: 100px; height: 100px; }
-      h1 { font-size: 1.8rem; }
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .card {
+        padding: 26px 20px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+  <div class="card">
 
     <!-- Logo -->
     <div class="logo">
-      <img src="https://hachani79.github.io/getamlak360.github.io/Webpagelogo.png" alt="Amlak 360 Logo">
+      https://hachani79.github.io/getamlak360.github.io/Webpagelogo.png
     </div>
 
     <h1>Thank You!</h1>
     <p class="subtitle">Your Amlak 360 download has started</p>
 
-    <div class="check-icon">🫶</div>
+    <div class="check">🫶</div>
 
     <p class="message">
-      We're excited to have you join the <span class="highlight">Amlak 360</span> community!
+      We're excited to have you join the
+      <span class="highlight">Amlak 360</span> community!
       <br><br>
-      Your APK is downloading now. You'll be able to manage your entire wealth portfolio in seconds.
+      Your APK is downloading now. You'll be able to manage your entire wealth
+      portfolio in seconds.
     </p>
 
-    <a
-      href="https://github.com/hachani79/getamlak360.github.io/releases/download/v1.0.0/Amlak360v1.apk"
-      class="download-link"
-    >
-      👉 Click here if download doesn't start
-      <span class="spinner"></span>
+    https://github.com/hachani79/getamlak360.github.io/releases/download/v1.0.0/Amlak360v1.apk
+      👉 Click here if download doesn’t start
     </a>
 
     <div class="features">
-      <div class="features-title">What's Inside:</div>
+      <div class="features-title">What’s Inside</div>
 
-      <div class="feature-item">
-        <div class="feature-icon">✓</div>
-        <span>Unified Wealth Dashboard</span>
-      </div>
-
-      <div class="feature-item">
-        <div class="feature-icon">✓</div>
-        <span>Property Management System</span>
-      </div>
-
-      <div class="feature-item">
-        <div class="feature-icon">✓</div>
-        <span>Investments &amp; Zakat Calculator</span>
-      </div>
-
-      <div class="feature-item">
-        <div class="feature-icon">✓</div>
-        <span>Real-time Market Insights</span>
-      </div>
+      <div class="feature"><span>✓</span> Unified Wealth Dashboard</div>
+      <div class="feature"><span>✓</span> Property Management System</div>
+      <div class="feature"><span>✓</span> Investments & Zakat Calculator</div>
+      <div class="feature"><span>✓</span> Real‑time Market Insights</div>
     </div>
 
-    <p class="footer-text">
-      Questions? Visit us at<br>
+    <div class="footer">
+      Questions? Visit us at<br />
       <span class="highlight">www.getamlak360.com</span>
-    </p>
+    </div>
 
   </div>
 
-  <!-- Auto-start download -->
   <script>
     setTimeout(() => {
       window.location.href =
@@ -258,3 +202,4 @@
 
 </body>
 </html>
+``

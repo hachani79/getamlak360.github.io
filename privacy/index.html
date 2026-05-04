@@ -1,36 +1,141 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Privacy Policy – Amlak 360</title>
-</head>
-<body>
-  <h1>Privacy Policy</h1>
+import { useRef } from 'react';
+import { Shield, FileText } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
-  <p>
-    Amlak 360 is designed to help users manage estate portfolios and track assets in a
-    secure and structured way.
-  </p>
+const LAST_UPDATED = 'May 3, 2025';
 
-  <p>
-    Data entered into the Amlak 360 app is securely stored using Base44 infrastructure.
-    Appropriate technical and organizational measures are used to protect user data
-    against unauthorized access.
-  </p>
+export default function Legal() {
+  const privacyRef = useRef(null);
+  const termsRef = useRef(null);
 
-  <p>
-    Amlak 360 does not sell or share personal data with third parties for advertising or
-    marketing purposes. Access to stored data is strictly limited to supporting the
-    core functionality of the app.
-  </p>
+  const scrollTo = (ref) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
-  <p>
-    Users remain responsible for the accuracy and management of the information they
-    enter into the app.
-  </p>
+  return (
+    <div className="max-w-2xl mx-auto space-y-8 pb-10">
+      {/* Header */}
+      <div className="text-center space-y-2 pt-2">
+        <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto">
+          <FileText className="w-6 h-6 text-primary" />
+        </div>
+        <h1 className="text-2xl font-bold">Legal</h1>
+        <p className="text-sm text-muted-foreground">Privacy Policy & Terms of Use</p>
+      </div>
 
-  <p>
-    If you have any questions regarding this Privacy Policy, you may contact us at
-    <strong>contact@getamlak360.com</strong>.
-  </p>
-</body>
-</html>
+      {/* Tab Buttons */}
+      <div className="flex gap-3 justify-center">
+        <Button variant="outline" onClick={() => scrollTo(privacyRef)} className="gap-2">
+          <Shield className="w-4 h-4" />
+          Privacy Policy
+        </Button>
+        <Button variant="outline" onClick={() => scrollTo(termsRef)} className="gap-2">
+          <FileText className="w-4 h-4" />
+          Terms of Use
+        </Button>
+      </div>
+
+      {/* Privacy Policy */}
+      <section ref={privacyRef} className="rounded-2xl border bg-card p-6 space-y-5 scroll-mt-4">
+        <div>
+          <h2 className="text-lg font-bold">Privacy Policy – Amlak 360</h2>
+          <p className="text-xs text-muted-foreground mt-1">Last updated: {LAST_UPDATED}</p>
+        </div>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Amlak 360 respects your privacy and is committed to protecting your personal data.
+        </p>
+
+        {[
+          {
+            title: 'Information We Collect',
+            text: 'We may collect basic information such as your email address (if you choose to provide one) and the financial data you input into the app, including accounts, assets, income, expenses, and related information.',
+          },
+          {
+            title: 'How We Use Your Information',
+            text: 'Your data is used solely to provide and improve the functionality of the app. This includes tracking your wealth, generating insights, and displaying personalized financial information.',
+          },
+          {
+            title: 'Data Storage and Security',
+            text: 'We take reasonable measures to protect your data. Your information is stored securely and is not sold, shared, or distributed to third parties.',
+          },
+          {
+            title: 'User Control',
+            text: 'You have full control over your data. You may update, export, or delete your information at any time within the app.',
+          },
+          {
+            title: 'Data Privacy',
+            text: 'Amlak 360 does not access your financial accounts directly. All data is provided voluntarily by you and remains under your control.',
+          },
+          {
+            title: 'Photos, Camera & File Uploads',
+            text: 'Amlak 360 allows you to attach photos and documents (such as property images, contracts, or receipts) to your records within the app. The following applies:\n\n• Camera: We never activate your camera automatically or in the background. The camera may be offered as an option by your device\'s operating system when you tap an upload button — this is standard OS behavior. We do not request camera permission directly, and no photo is taken without your explicit action.\n\n• Photo Library: We do not browse or access your photo library without your direct interaction. Photos are only accessed when you manually select them through the file picker.\n\n• File Storage: Any files you choose to upload are stored securely and are used solely to enhance your personal records within the app. We do not share, sell, or use your uploaded media for any other purpose.\n\n• No Background Access: We never access your camera, microphone, or photo library in the background.',
+          },
+          {
+            title: 'Changes to This Policy',
+            text: 'We may update this Privacy Policy from time to time. Any changes will be reflected on this page.',
+          },
+          {
+            title: 'Contact',
+            text: 'If you have any questions, please contact us at: contact@getamlak360.com',
+          },
+        ].map(({ title, text }) => (
+          <div key={title} className="space-y-1">
+            <h3 className="text-sm font-semibold text-foreground">{title}</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">{text}</p>
+          </div>
+        ))}
+      </section>
+
+      {/* Terms of Use */}
+      <section ref={termsRef} className="rounded-2xl border bg-card p-6 space-y-5 scroll-mt-4">
+        <div>
+          <h2 className="text-lg font-bold">Terms of Use – Amlak 360</h2>
+          <p className="text-xs text-muted-foreground mt-1">Last updated: {LAST_UPDATED}</p>
+        </div>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          By using Amlak 360, you agree to the following terms:
+        </p>
+
+        {[
+          {
+            title: 'Use of the App',
+            text: 'Amlak 360 is a personal finance and wealth tracking tool designed to help users monitor their assets, expenses, and financial data.',
+          },
+          {
+            title: 'No Financial Advice',
+            text: 'The information provided within the app is for informational purposes only and does not constitute financial, investment, legal, or tax advice.',
+          },
+          {
+            title: 'User Responsibility',
+            text: 'You are responsible for the accuracy of the data you enter and any decisions you make based on the app\'s insights.',
+          },
+          {
+            title: 'Availability and Updates',
+            text: 'We may update, modify, or discontinue features of the app at any time without prior notice.',
+          },
+          {
+            title: 'Limitation of Liability',
+            text: 'Amlak 360 is provided "as is" without warranties of any kind. We are not liable for any financial losses or decisions made based on the use of the app.',
+          },
+          {
+            title: 'Fair Use',
+            text: 'You agree not to misuse the app or attempt to access data that does not belong to you.',
+          },
+          {
+            title: 'Changes to Terms',
+            text: 'We may update these Terms of Use from time to time. Continued use of the app means you accept any changes.',
+          },
+          {
+            title: 'Contact',
+            text: 'For any questions, please contact: contact@getamlak360.com',
+          },
+        ].map(({ title, text }) => (
+          <div key={title} className="space-y-1">
+            <h3 className="text-sm font-semibold text-foreground">{title}</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">{text}</p>
+          </div>
+        ))}
+      </section>
+    </div>
+  );
+}

@@ -1,141 +1,286 @@
-import { useRef } from 'react';
-import { Shield, FileText } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal - Amlak 360</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-const LAST_UPDATED = 'May 3, 2025';
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
 
-export default function Legal() {
-  const privacyRef = useRef(null);
-  const termsRef = useRef(null);
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
 
-  const scrollTo = (ref) => {
-    ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-  return (
-    <div className="max-w-2xl mx-auto space-y-8 pb-10">
-      {/* Header */}
-      <div className="text-center space-y-2 pt-2">
-        <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto">
-          <FileText className="w-6 h-6 text-primary" />
+        .header-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            justify-content: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tab-button {
+            padding: 12px 24px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            position: relative;
+            bottom: -1px;
+        }
+
+        .tab-button:hover {
+            color: #1a1a1a;
+        }
+
+        .tab-button.active {
+            color: #1a1a1a;
+            border-bottom-color: #0066cc;
+        }
+
+        .content {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .content h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .last-updated {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .content h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        .content p {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .content ul {
+            list-style: none;
+            margin-bottom: 16px;
+            margin-left: 20px;
+        }
+
+        .content ul li {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .content ul li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 24px 16px;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .tabs {
+                flex-wrap: wrap;
+            }
+
+            .tab-button {
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+
+            .content {
+                padding: 24px;
+            }
+
+            .content h2 {
+                font-size: 20px;
+            }
+
+            .content h3 {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-icon">📋</div>
+            <h1>Legal</h1>
+            <p>Privacy Policy & Terms of Use</p>
         </div>
-        <h1 className="text-2xl font-bold">Legal</h1>
-        <p className="text-sm text-muted-foreground">Privacy Policy & Terms of Use</p>
-      </div>
 
-      {/* Tab Buttons */}
-      <div className="flex gap-3 justify-center">
-        <Button variant="outline" onClick={() => scrollTo(privacyRef)} className="gap-2">
-          <Shield className="w-4 h-4" />
-          Privacy Policy
-        </Button>
-        <Button variant="outline" onClick={() => scrollTo(termsRef)} className="gap-2">
-          <FileText className="w-4 h-4" />
-          Terms of Use
-        </Button>
-      </div>
-
-      {/* Privacy Policy */}
-      <section ref={privacyRef} className="rounded-2xl border bg-card p-6 space-y-5 scroll-mt-4">
-        <div>
-          <h2 className="text-lg font-bold">Privacy Policy – Amlak 360</h2>
-          <p className="text-xs text-muted-foreground mt-1">Last updated: {LAST_UPDATED}</p>
+        <div class="tabs">
+            <button class="tab-button active" onclick="switchTab('privacy')">
+                🔒 Privacy Policy
+            </button>
+            <button class="tab-button" onclick="switchTab('terms')">
+                📄 Terms of Use
+            </button>
         </div>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Amlak 360 respects your privacy and is committed to protecting your personal data.
-        </p>
 
-        {[
-          {
-            title: 'Information We Collect',
-            text: 'We may collect basic information such as your email address (if you choose to provide one) and the financial data you input into the app, including accounts, assets, income, expenses, and related information.',
-          },
-          {
-            title: 'How We Use Your Information',
-            text: 'Your data is used solely to provide and improve the functionality of the app. This includes tracking your wealth, generating insights, and displaying personalized financial information.',
-          },
-          {
-            title: 'Data Storage and Security',
-            text: 'We take reasonable measures to protect your data. Your information is stored securely and is not sold, shared, or distributed to third parties.',
-          },
-          {
-            title: 'User Control',
-            text: 'You have full control over your data. You may update, export, or delete your information at any time within the app.',
-          },
-          {
-            title: 'Data Privacy',
-            text: 'Amlak 360 does not access your financial accounts directly. All data is provided voluntarily by you and remains under your control.',
-          },
-          {
-            title: 'Photos, Camera & File Uploads',
-            text: 'Amlak 360 allows you to attach photos and documents (such as property images, contracts, or receipts) to your records within the app. The following applies:\n\n• Camera: We never activate your camera automatically or in the background. The camera may be offered as an option by your device\'s operating system when you tap an upload button — this is standard OS behavior. We do not request camera permission directly, and no photo is taken without your explicit action.\n\n• Photo Library: We do not browse or access your photo library without your direct interaction. Photos are only accessed when you manually select them through the file picker.\n\n• File Storage: Any files you choose to upload are stored securely and are used solely to enhance your personal records within the app. We do not share, sell, or use your uploaded media for any other purpose.\n\n• No Background Access: We never access your camera, microphone, or photo library in the background.',
-          },
-          {
-            title: 'Changes to This Policy',
-            text: 'We may update this Privacy Policy from time to time. Any changes will be reflected on this page.',
-          },
-          {
-            title: 'Contact',
-            text: 'If you have any questions, please contact us at: contact@getamlak360.com',
-          },
-        ].map(({ title, text }) => (
-          <div key={title} className="space-y-1">
-            <h3 className="text-sm font-semibold text-foreground">{title}</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">{text}</p>
-          </div>
-        ))}
-      </section>
+        <div class="content">
+            <!-- Privacy Policy Tab -->
+            <div id="privacy" class="tab-content active">
+                <h2>Privacy Policy – Amlak 360</h2>
+                <span class="last-updated">Last updated: May 3, 2025</span>
 
-      {/* Terms of Use */}
-      <section ref={termsRef} className="rounded-2xl border bg-card p-6 space-y-5 scroll-mt-4">
-        <div>
-          <h2 className="text-lg font-bold">Terms of Use – Amlak 360</h2>
-          <p className="text-xs text-muted-foreground mt-1">Last updated: {LAST_UPDATED}</p>
+                <p>Amlak 360 respects your privacy and is committed to protecting your personal data.</p>
+
+                <h3>Information We Collect</h3>
+                <p>We may collect basic information such as your email address (if you choose to provide one) and the financial data you input into the app, including accounts, assets, income, expenses, and related information.</p>
+
+                <h3>How We Use Your Information</h3>
+                <p>Your data is used solely to provide and improve the functionality of the app. This includes tracking your wealth, generating insights, and displaying personalized financial information.</p>
+
+                <h3>Data Storage and Security</h3>
+                <p>We take reasonable measures to protect your data. Your information is stored securely and is not sold, shared, or distributed to third parties.</p>
+
+                <h3>User Control</h3>
+                <p>You have full control over your data. You may update, export, or delete your information at any time within the app.</p>
+
+                <h3>Data Privacy</h3>
+                <p>Amlak 360 does not access your financial accounts directly. All data is provided voluntarily by you and remains under your control.</p>
+
+                <h3>Photos, Camera & File Uploads</h3>
+                <p>Amlak 360 allows you to attach photos and documents (such as property images, contracts, or receipts) to your records within the app. The following applies:</p>
+                <ul>
+                    <li><strong>Camera:</strong> We never activate your camera automatically or in the background. The camera may be offered as an option by your device's operating system when you tap an upload button — this is standard OS behavior. We do not request camera permission directly, and no photo is taken without your explicit action.</li>
+                    <li><strong>Photo Library:</strong> We do not browse or access your photo library without your direct interaction. Photos are only accessed when you manually select them through the file picker.</li>
+                    <li><strong>File Storage:</strong> Any files you choose to upload are stored securely and are used solely to enhance your personal records within the app. We do not share, sell, or use your uploaded media for any other purpose.</li>
+                    <li><strong>No Background Access:</strong> We never access your camera, microphone, or photo library in the background.</li>
+                </ul>
+
+                <h3>Changes to This Policy</h3>
+                <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page.</p>
+
+                <h3>Contact</h3>
+                <p>If you have any questions, please contact us at: <strong>contact@getamlak360.com</strong></p>
+            </div>
+
+            <!-- Terms of Use Tab -->
+            <div id="terms" class="tab-content">
+                <h2>Terms of Use – Amlak 360</h2>
+                <span class="last-updated">Last updated: May 3, 2025</span>
+
+                <p>By using Amlak 360, you agree to the following terms:</p>
+
+                <h3>Use of the App</h3>
+                <p>Amlak 360 is a personal finance and wealth tracking tool designed to help users monitor their assets, expenses, and financial data.</p>
+
+                <h3>No Financial Advice</h3>
+                <p>The information provided within the app is for informational purposes only and does not constitute financial, investment, legal, or tax advice.</p>
+
+                <h3>User Responsibility</h3>
+                <p>You are responsible for the accuracy of the data you enter and any decisions you make based on the app's insights.</p>
+
+                <h3>Availability and Updates</h3>
+                <p>We may update, modify, or discontinue features of the app at any time without prior notice.</p>
+
+                <h3>Limitation of Liability</h3>
+                <p>Amlak 360 is provided "as is" without warranties of any kind. We are not liable for any financial losses or decisions made based on the use of the app.</p>
+
+                <h3>Fair Use</h3>
+                <p>You agree not to misuse the app or attempt to access data that does not belong to you.</p>
+
+                <h3>Changes to Terms</h3>
+                <p>We may update these Terms of Use from time to time. Continued use of the app means you accept any changes.</p>
+
+                <h3>Contact</h3>
+                <p>For any questions, please contact: <strong>contact@getamlak360.com</strong></p>
+            </div>
         </div>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          By using Amlak 360, you agree to the following terms:
-        </p>
-
-        {[
-          {
-            title: 'Use of the App',
-            text: 'Amlak 360 is a personal finance and wealth tracking tool designed to help users monitor their assets, expenses, and financial data.',
-          },
-          {
-            title: 'No Financial Advice',
-            text: 'The information provided within the app is for informational purposes only and does not constitute financial, investment, legal, or tax advice.',
-          },
-          {
-            title: 'User Responsibility',
-            text: 'You are responsible for the accuracy of the data you enter and any decisions you make based on the app\'s insights.',
-          },
-          {
-            title: 'Availability and Updates',
-            text: 'We may update, modify, or discontinue features of the app at any time without prior notice.',
-          },
-          {
-            title: 'Limitation of Liability',
-            text: 'Amlak 360 is provided "as is" without warranties of any kind. We are not liable for any financial losses or decisions made based on the use of the app.',
-          },
-          {
-            title: 'Fair Use',
-            text: 'You agree not to misuse the app or attempt to access data that does not belong to you.',
-          },
-          {
-            title: 'Changes to Terms',
-            text: 'We may update these Terms of Use from time to time. Continued use of the app means you accept any changes.',
-          },
-          {
-            title: 'Contact',
-            text: 'For any questions, please contact: contact@getamlak360.com',
-          },
-        ].map(({ title, text }) => (
-          <div key={title} className="space-y-1">
-            <h3 className="text-sm font-semibold text-foreground">{title}</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">{text}</p>
-          </div>
-        ))}
-      </section>
     </div>
-  );
-}
+
+    <script>
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Remove active state from all buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active state to clicked button
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
